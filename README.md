@@ -21,7 +21,7 @@ docker run -d \
 ### OC_USER
 Username to connect to OwnCloud
 ### OC_PASS
-Password or AppToken for Owncloud User
+Password or App-Token for Owncloud User. I recommend using an App-Token. This can be created in your Personal settings in OwnCloud Webinterface. Its called __App passwords__.
 ### OC_SERVER
 OwnCloud Server URL. eg. `https://myowncloud.com` or `https://myserver.com/owncloud`
 ### OC_WEBDAV
