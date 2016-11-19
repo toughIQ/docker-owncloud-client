@@ -1,0 +1,30 @@
+FROM debian:8
+MAINTAINER toughIQ <toughiq@gmail.com>
+
+RUN apt-get update \
+    && apt-get install -y wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
+
+
+RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_8.0/ /' > /etc/apt/sources.list.d/owncloud-client.list \
+    && wget http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_8.0/Release.key \
+    && apt-key add - < Release.key \
+    && apt-get update \
+    && apt-get install -yq --no-install-recommends owncloud-client \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
+
+COPY run.sh /run.sh
+WORKDIR /occlient
+
+ENV OC_USER=oc_username \
+    OC_PASS=oc_passwordORtoken \
+    OC_SERVER=https://yourserver.com \
+    OC_WEBDAV=/remote.php/webdav \
+    OC_FILEPATH=/ \
+    RUN_INTERVAL=30
+
+CMD ["/run.sh"]
