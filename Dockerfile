@@ -18,13 +18,16 @@ RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/D
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
 
 COPY run.sh /run.sh
-WORKDIR /occlient
+WORKDIR /ocdata
 
 ENV OC_USER=oc_username \
     OC_PASS=oc_passwordORtoken \
-    OC_SERVER=https://yourserver.com \
+    OC_PROTO=https \
+    OC_SERVER=yourserver.com \
     OC_WEBDAV=/remote.php/webdav \
     OC_FILEPATH=/ \
-    RUN_INTERVAL=30
+    TRUST_SELFSIGN=0 \
+    RUN_INTERVAL=30 \
+    RUN_UID=1000
 
 CMD ["/run.sh"]
