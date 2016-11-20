@@ -17,8 +17,11 @@ RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/D
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
 
-COPY run.sh /run.sh
+COPY *.sh /
 WORKDIR /ocdata
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["/run.sh"]
 
 ENV OC_USER=oc_username \
     OC_PASS=oc_passwordORtoken \
@@ -30,4 +33,4 @@ ENV OC_USER=oc_username \
     RUN_INTERVAL=30 \
     RUN_UID=1000
 
-CMD ["/run.sh"]
+
