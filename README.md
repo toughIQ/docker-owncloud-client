@@ -12,22 +12,34 @@ docker run -d \
   --name occlient \
   -e OC_USER=owncloud_username \
   -e OC_PASS=owncloud_password \
-  -e OC_SERVER=https://myowncloud.com \
-  -v ${PWD}/ocdata:/occlient \
+  -e OC_SERVER=myowncloud.com \
+  -v ${PWD}/ocdata:/ocdata \
   toughiq/owncloud-client
 
 ```
+
+I also added a `docker-compose.yml` file with all available parameters, so its easier to setup your proper environment.
+
+
 ## Environment Variables
 ### OC_USER
 Username to connect to OwnCloud
 ### OC_PASS
 Password or App-Token for Owncloud User. I recommend using an App-Token. This can be created in your Personal settings in OwnCloud Webinterface. Its called __App passwords__.
+### OC_PROTO
+Defaults to `https`. If you know what you are doing, you could change it to `http`. __Not recommended!__
 ### OC_SERVER
-OwnCloud Server URL. eg. `https://myowncloud.com` or `https://myserver.com/owncloud`
+OwnCloud Server URL. eg. `myowncloud.com`
+Since this is used for `.netrc` creation and CLI URL, just give the servername here. The protocol and path information is added by other variables.
+### OC_URLPATH
+Use this parameter to add a path to your OwnCloud instance. Like https://myserver.com__/owncloud__. In this case the value would be `/owncloud/`.
 ### OC_WEBDAV
 This variable is fixed with most OwnCloud installations, so it might not be changed in normal usecases. It defaults to `/remote.php/webdav`
 ### OC_FILEPATH
 You can append a filepath, so the client will only sync from this path and below. eg. `/Photos` will only sync everything in the __Photos__ directory of your OwnCloud.
 ### RUN_INTERVAL
 This specifies the interval in seconds at which the client will run and check for changes.
+### RUN_UID
+This is needed to ensure, that the data written to the mounted directory, is written as your user and not as root. There will be a user with this exact UID created within the container and `owncloudcmd` is executed as that user.
+Defaults to `UID 1000` which is the common UID for desktop linux users. You can find your current UID by `id -u` on the commandline.
 

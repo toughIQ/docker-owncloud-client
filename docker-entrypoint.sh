@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 useradd --uid $RUN_UID -m --shell /bin/bash occlient
 
