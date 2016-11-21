@@ -20,6 +20,8 @@ docker run -d \
 
 I also added a `docker-compose.yml` file with all available parameters, so its easier to setup your proper environment.
 
+## Debugging
+Run a `docker logs -f <YourContainerID>` to see what is happening.
 
 ## Environment Variables
 ### OC_USER
@@ -34,7 +36,7 @@ Since this is used for `.netrc` creation and CLI URL, just give the servername h
 ### OC_URLPATH
 Use this parameter to add a path to your OwnCloud instance. Like https://myserver.com__/owncloud__. In this case the value would be `/owncloud/`.
 ### OC_WEBDAV
-This variable is fixed with most OwnCloud installations, so it might not be changed in normal usecases. It defaults to `/remote.php/webdav`
+This variable is fixed with most OwnCloud installations, so it might not be changed in normal usecases. It defaults to `remote.php/webdav`
 ### OC_FILEPATH
 You can append a filepath, so the client will only sync from this path and below. eg. `/Photos` will only sync everything in the __Photos__ directory of your OwnCloud.
 ### RUN_INTERVAL
