@@ -1,0 +1,9 @@
+occlient:
+  image: toughiq/owncloud-client
+  volumes:
+    - ${PWD}/mydata:/ocdata
+  environment:
+    - OC_SERVER=myocserver.com
+    - OC_USER=myuser
+    - OC_PASS=mypass
+
