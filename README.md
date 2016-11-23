@@ -44,4 +44,44 @@ This specifies the interval in seconds at which the client will run and check fo
 ### RUN_UID
 This is needed to ensure, that the data written to the mounted directory, is written as your user and not as root. There will be a user with this exact UID created within the container and `owncloudcmd` is executed as that user.
 Defaults to `UID 1000` which is the common UID for desktop linux users. You can find your current UID by `id -u` on the commandline.
-Currently the usage of `ID 0` for root is not supported, since it would collide with the usercreation within the container. Will be changed later on.
+Currently the usage of `UID 0` for __root__ is not supported, since it would collide with the usercreation within the container. Will be changed later on.
+
+## Loadtesting OwnCloud instances
+__Do this at your own risk, only when know what you are doing and if the OwnCloud you test against belongs to you!__
+
+Using this container in combination with Docker Swarm Mode can simulate concurrent clients and load/traffic patterns.
+
+### Setup
+#### Docker Swarm Mode
+- Set up a Swarm by `docker swarm init`
+- Optional add additional worker nodes `docker swarm join --token XXX <MasterIP>:<MasterPort>`
+
+#### OwnCloud User
+- Create/Prepare one or more Testusers in your OwnCloud.
+
+#### Docker Service
+Start one Container client:
+```
+docker service create \
+  --name occlients \
+  --env OC_SERVER=owncloud.yourdomain.com \
+  --env OC_USER=YourOCuser \
+  --env OC_PASS=YourOCpassword \
+  toughiq/owncloud-client:latest
+```
+
+See environment variables section, if you need to add some more values. Like __OC_URLPATH__ or __OC_FILEPATH__.
+Mounting of a volume is not needed, since we dont want to write the data on the local host. For this tests its just fine, if the data only resides within the containers.
+
+#### Scale Docker Service
+Scale the __number__ of running containers up or down.
+```
+docker service scale occlients=<NUMBER>
+```
+
+#### Changing Files/Folders
+If you want to change files and folders, which get synced to OwnCloud, you can use the webinterface and connect as the user specified in this test.
+Or you could __exec__ into one of the running containers and change data within. `docker exec -it <ContainerID> bash`
+
+#### Removing the Docker Service
+To stop/remove the containers, just issue `docker service rm occlients`.
