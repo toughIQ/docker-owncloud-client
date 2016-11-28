@@ -2,7 +2,7 @@
 set -e
 
 # check if we should trust selfsigned certificates
-if [ "$TRUST_SELFSIGN" eq 1 ]; then
+if [ "$TRUST_SELFSIGN" -eq 1 ]; then
   SELFSIGN="--trust"
 fi
 
