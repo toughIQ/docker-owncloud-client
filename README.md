@@ -4,7 +4,7 @@ Dockerized OwnCloud CLI Client
 __Work in progress!__
 
 ## Build
-`docker build -t toughiq/owncloud-client .`
+`docker build -t toughiq/owncloud-client:rpi .`
 
 ## RUN
 ```
@@ -14,7 +14,7 @@ docker run -d \
   -e OC_PASS=owncloud_password \
   -e OC_SERVER=myowncloud.com \
   -v ${PWD}/ocdata:/ocdata \
-  toughiq/owncloud-client
+  toughiq/owncloud-client:rpi
 
 ```
 
@@ -67,7 +67,7 @@ docker service create \
   --env OC_SERVER=owncloud.yourdomain.com \
   --env OC_USER=YourOCuser \
   --env OC_PASS=YourOCpassword \
-  toughiq/owncloud-client:latest
+  toughiq/owncloud-client:rpi
 ```
 
 See environment variables section, if you need to add some more values. Like __OC_URLPATH__ or __OC_FILEPATH__.
