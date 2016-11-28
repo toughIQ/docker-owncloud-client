@@ -1,12 +1,13 @@
 # docker-owncloud-client
 Dockerized OwnCloud CLI Client
 
-__Work in progress!__
+## Raspberry Pi Image
+There is also an RPI image availabe. Config stays the same, just use __:rpi__ with all images below. eg. `toughiq/owncloud-client:rpi`
 
 ## Build
 `docker build -t toughiq/owncloud-client .`
 
-## RUN
+## Run
 ```
 docker run -d \
   --name occlient \
