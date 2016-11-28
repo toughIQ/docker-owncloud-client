@@ -1,18 +1,13 @@
-FROM debian:8
+FROM resin/rpi-raspbian:latest
 MAINTAINER toughIQ <toughiq@gmail.com>
 
+ADD http://pub.sgripon.net/owncloud-client/rpi3/owncloud-client-2.2.4_armhf.deb /
+
 RUN apt-get update \
-    && apt-get install -y wget \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
-
-
-RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_8.0/ /' > /etc/apt/sources.list.d/owncloud-client.list \
-    && wget http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_8.0/Release.key \
-    && apt-key add - < Release.key \
-    && apt-get update \
-    && apt-get install -yq --no-install-recommends owncloud-client \
+    && dpkg -i --force-all *.deb \
+    && apt-get install -y -f \
+    && apt-get install -y libqt4-sql-sqlite \
+    && rm -rf *.deb \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
@@ -33,5 +28,3 @@ ENV OC_USER=oc_username \
     TRUST_SELFSIGN=0 \
     RUN_INTERVAL=30 \
     RUN_UID=1000
-
-
