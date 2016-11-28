@@ -3,6 +3,7 @@ Dockerized OwnCloud CLI Client
 
 ## Raspberry Pi Image
 There is also an RPI image availabe. Config stays the same, just use __:rpi__ with all images below. eg. `toughiq/owncloud-client:rpi`
+Sources in __rpi__ branch: https://github.com/toughIQ/docker-owncloud-client/tree/rpi
 
 ## Build
 `docker build -t toughiq/owncloud-client .`
