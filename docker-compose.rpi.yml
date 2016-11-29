@@ -1,0 +1,15 @@
+occlient:
+  image: toughiq/owncloud-client:rpi
+  volumes:
+    - ${PWD}/mydata:/ocdata
+  environment:
+    - OC_USER=myuser
+    - OC_PASS=mypass
+    - OC_PROTO=https
+    - OC_SERVER=myocserver.com
+    - OC_URLPATH=/
+    - OC_WEBDAV=remote.php/webdav
+    - OC_FILEPATH=/
+    - TRUST_SELFSIGN=0
+    - RUN_INTERVAL=30
+    - RUN_UID=1000
