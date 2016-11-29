@@ -22,7 +22,10 @@ docker run -d \
 
 ```
 
-I also added a `docker-compose.yml` file with all available parameters, so its easier to setup your proper environment.
+I also added a `docker-compose.yml` file with all available parameters, so its easier to setup your proper environment. Change values to match your environment and run with `docker-compose up -d`
+
+### RPI
+Run with `docker-compose -f docker-compose.rpi.yml up -d`
 
 ## Debugging
 Run a `docker logs -f <YourContainerID>` to see what is happening.
