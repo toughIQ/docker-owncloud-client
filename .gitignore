@@ -1,2 +1,3 @@
 docker-compose.*.yml
+!docker-compose.rpi.yml
 *data/
