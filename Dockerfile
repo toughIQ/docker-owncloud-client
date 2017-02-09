@@ -31,6 +31,7 @@ ENV OC_USER=oc_username \
     OC_WEBDAV=remote.php/webdav \
     OC_FILEPATH=/ \
     TRUST_SELFSIGN=0 \
+    SYNC_HIDDEN=0 \
     RUN_INTERVAL=30 \
     RUN_UID=1000
 
