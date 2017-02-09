@@ -52,6 +52,8 @@ This specifies the interval in seconds at which the client will run and check fo
 This is needed to ensure, that the data written to the mounted directory, is written as your user and not as root. There will be a user with this exact UID created within the container and `owncloudcmd` is executed as that user.
 Defaults to `UID 1000` which is the common UID for desktop linux users. You can find your current UID by `id -u` on the commandline.
 Currently the usage of `UID 0` for __root__ is not supported, since it would collide with the usercreation within the container. Will be changed later on.
+### SYNC_HIDDEN
+If this parameter is set to 1, it will also sync all hidden files within the specified ownCloud directory (equivalent to owncloudcmd -h) 
 
 ## Loadtesting OwnCloud instances
 __Do this at your own risk, only when know what you are doing and if the OwnCloud you test against belongs to you!__
