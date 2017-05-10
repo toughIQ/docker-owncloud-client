@@ -12,5 +12,6 @@ occlient:
     - OC_FILEPATH=/
     - TRUST_SELFSIGN=0
     - SYNC_HIDDEN=0
+    - SILENCE_OUTPUT=1
     - RUN_INTERVAL=30
     - RUN_UID=1000

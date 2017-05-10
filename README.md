@@ -52,6 +52,9 @@ To ignore errors from selfsigned certificates, set value to `1`.
 ### SYNC_HIDDEN
 If this parameter is set to `1`, it will also sync all hidden files within the specified ownCloud directory (equivalent to `owncloudcmd -h`) 
 `Default: 0`
+### SILENCE_OUTPUT
+If this parameter is set to `0`, output will be more verbose and might create huge log files, if it is set to `1` it will output will be silenced. 
+`Default: 1`
 ### RUN_INTERVAL
 This specifies the interval in seconds at which the client will run and check for changes.
 ### RUN_UID
