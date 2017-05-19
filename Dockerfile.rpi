@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER toughIQ <toughiq@gmail.com>
 
-ADD http://pub.sgripon.net/owncloud-client/rpi3/owncloud-client-2.2.4_armhf.deb /
+ADD http://pub.sgripon.net/owncloud-client/rpi3/owncloud-client-2.3.2_armhf.deb /
 
 RUN apt-get update \
     && dpkg -i --force-all *.deb \
