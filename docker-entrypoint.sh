@@ -7,8 +7,9 @@ if [ $(getent passwd occlient|wc -l) -eq 0 ]; then
 fi
 
 netrc_file="/home/occlient/.netrc"
+oc_server_without_port=$(echo $OC_SERVER | sed 's/\(.*\):.*/\1/')
 cat <<EOF > $netrc_file
-machine $OC_SERVER
+machine $oc_server_without_port
 	login $OC_USER
 	password $OC_PASS
 EOF
