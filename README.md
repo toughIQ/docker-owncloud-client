@@ -40,6 +40,7 @@ Defaults to `https`. If you know what you are doing, you could change it to `htt
 ### OC_SERVER
 OwnCloud Server URL. eg. `myowncloud.com`
 Since this is used for `.netrc` creation and CLI URL, just give the servername here. The protocol and path information is added by other variables.
+If you need to specify a different port, eg. 8443 instead of default 443, please specify like `myowncloud.com:8443`
 ### OC_URLPATH
 Use this parameter to add a path to your OwnCloud instance. Like https://myserver.com__/owncloud__. In this case the value would be `/owncloud/`.
 ### OC_WEBDAV
