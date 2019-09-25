@@ -9,6 +9,7 @@ RUN apt update \
     && apt -y upgrade \
     && apt -y install \
     wget \
+    dialog \
     apt-utils \
     htop \
     gnupg2 \
