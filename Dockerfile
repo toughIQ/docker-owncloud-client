@@ -20,14 +20,22 @@ RUN apt update \
 
 
 RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_9.0/ /' > /etc/apt/sources.list.d/owncloud-client.list \
-    && wget https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_9.0/Release.key \
+    && wget -nv https://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_9.0/Release.key -O Release.key \
     && apt-key add - < Release.key \
     && apt update \
     && apt install -yq --no-install-recommends owncloud-client \
     && apt upgrade -y \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
+    && rm -rf \
+    /var/lib/apt/lists/* \
+    /tmp/* \
+    /var/tmp/* \
+    /usr/share/doc \
+    /usr/share/man \
+    /usr/share/locale \
+    /usr/share/info \
+    /usr/share/lintian \
+    /Release.key
 
 COPY *.sh /opt/Scripts/
 WORKDIR /ocdata
