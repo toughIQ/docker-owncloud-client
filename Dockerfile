@@ -1,11 +1,16 @@
-FROM debian:8
+FROM debian:10
 MAINTAINER toughIQ <toughiq@gmail.com>
 
-RUN mkdir -p /opt/scripts
+# Create the directory in which the scripts will be stored
+RUN mkdir -p /opt/Scripts
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y wget \
+# Update, upgrade and install some packages
+RUN apt update \
+    && apt -y upgrade \
+    && apt -y install \
+    wget \
+    apt-utils \
+    htop \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
@@ -14,18 +19,18 @@ RUN apt-get update \
 RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_8.0/ /' > /etc/apt/sources.list.d/owncloud-client.list \
     && wget http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_8.0/Release.key \
     && apt-key add - < Release.key \
-    && apt-get update \
-    && apt-get install -yq --no-install-recommends owncloud-client \
-    && apt-get upgrade -y \
+    && apt update \
+    && apt install -yq --no-install-recommends owncloud-client \
+    && apt upgrade -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
 
-COPY *.sh /opt/scripts/
+COPY *.sh /opt/Scripts/
 WORKDIR /ocdata
 
-ENTRYPOINT ["/opt/scripts/docker-entrypoint.sh"]
-CMD ["/opt/scripts/run.sh"]
+ENTRYPOINT ["/opt/Scripts/docker-entrypoint.sh"]
+CMD ["/opt/Scripts/run.sh"]
 
 ENV OC_USER=oc_username \
     OC_PASS=oc_passwordORtoken \
