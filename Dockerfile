@@ -1,4 +1,4 @@
-FROM debian:10
+FROM debian:9
 MAINTAINER toughIQ <toughiq@gmail.com>
 
 # Create the directory in which the scripts will be stored
@@ -16,8 +16,8 @@ RUN apt update \
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
 
 
-RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_8.0/ /' > /etc/apt/sources.list.d/owncloud-client.list \
-    && wget http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_8.0/Release.key \
+RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_9.0/ /' > /etc/apt/sources.list.d/owncloud-client.list \
+    && wget https://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_9.0/Release.key \
     && apt-key add - < Release.key \
     && apt update \
     && apt install -yq --no-install-recommends owncloud-client \
