@@ -1,6 +1,3 @@
-[![Docker Pulls](https://img.shields.io/docker/pulls/toughiq/owncloud-client.svg)](https://hub.docker.com/r/toughiq/owncloud-client/)
-[![](https://images.microbadger.com/badges/image/toughiq/owncloud-client.svg)](https://microbadger.com/images/toughiq/owncloud-client "Get your own image badge on microbadger.com")
-
 # docker-owncloud-client
 Dockerized OwnCloud CLI Client
 
