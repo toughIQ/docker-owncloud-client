@@ -8,6 +8,7 @@ RUN mkdir -p /opt/Scripts
 RUN apt update \
     && apt -y upgrade \
     && apt -y install \
+    apt-transport-https \
     wget \
     dialog \
     apt-utils \
