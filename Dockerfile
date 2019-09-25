@@ -20,7 +20,7 @@ RUN apt update \
 
 
 RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_9.0/ /' > /etc/apt/sources.list.d/owncloud-client.list \
-    && wget -nv https://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_9.0/Release.key -O Release.key \
+    && wget -nv https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_9.0/Release.key -O Release.key \
     && apt-key add - < Release.key \
     && apt update \
     && apt install -yq --no-install-recommends owncloud-client \
