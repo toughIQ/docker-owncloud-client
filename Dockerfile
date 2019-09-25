@@ -1,7 +1,10 @@
 FROM debian:8
 MAINTAINER toughIQ <toughiq@gmail.com>
 
+RUN mkdir -p /opt/scripts
+
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
@@ -13,15 +16,16 @@ RUN echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/D
     && apt-key add - < Release.key \
     && apt-get update \
     && apt-get install -yq --no-install-recommends owncloud-client \
+    && apt-get upgrade -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
 
-COPY *.sh /
+COPY *.sh /opt/scripts/
 WORKDIR /ocdata
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["/run.sh"]
+ENTRYPOINT ["/opt/scripts/docker-entrypoint.sh"]
+CMD ["/opt/scripts/run.sh"]
 
 ENV OC_USER=oc_username \
     OC_PASS=oc_passwordORtoken \
@@ -35,5 +39,3 @@ ENV OC_USER=oc_username \
     SILENCE_OUTPUT=1 \
     RUN_INTERVAL=30 \
     RUN_UID=1000
-
-
