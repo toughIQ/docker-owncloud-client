@@ -12,8 +12,6 @@ RUN apt update \
     apt-utils \
     htop \
     gnupg2 \
-    gnupg1 \
-    gnupg \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
