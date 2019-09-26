@@ -16,7 +16,8 @@ if [ "$SILENCE_OUTPUT" -eq 1 ]; then
 	SILENCEOUTPUT='-s'
 fi
 
-#while true
-#do 
-su - occlient -c "owncloudcmd $SELFSIGN $SYNCHIDDEN $SILENCEOUTPUT -n --non-interactive /ocdata $OC_PROTO://$OC_SERVER$OC_URLPATH$OC_WEBDAV$OC_FILEPATH"
-#done
+while true
+do 
+	su - occlient -c "owncloudcmd $SELFSIGN $SYNCHIDDEN $SILENCEOUTPUT -n --non-interactive /ocdata $OC_PROTO://$OC_SERVER$OC_URLPATH$OC_WEBDAV$OC_FILEPATH"
+	sleep $RUN_INTERVAL
+done
