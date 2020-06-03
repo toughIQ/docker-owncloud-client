@@ -14,12 +14,13 @@ To run the container use this command:
 
 ```
 $ docker run -d \
-             --name occlient \
+             --name='occlient' \
              -v /your/ocdata/path/:/ocdata \
              -e OC_USER=owncloud_username \
              -e OC_PASS=owncloud_password \
              -e OC_SERVER=myowncloud.com \
-             dyonr/owncloud-client
+             --restart unless-stopped \
+             'dyonr/owncloud-client'
 ```
 
 I also added a `docker-compose.yml` file with all available parameters, so its easier to setup your proper environment. Change values to match your environment and run with `docker-compose up -d`
@@ -65,10 +66,11 @@ $ docker build -t docker-owncloud-client .
 ## Run it:
 ```
 $ docker run -d \
-             --name occlient \
+             --name='occlient' \
              -v /your/ocdata/path/:/ocdata \
              -e OC_USER=owncloud_username \
              -e OC_PASS=owncloud_password \
              -e OC_SERVER=myowncloud.com \
-             dyonr/owncloud-client
+             --restart unless-stopped \
+             'dyonr/owncloud-client'
 ```
