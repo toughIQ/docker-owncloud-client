@@ -64,7 +64,7 @@ $ docker build -t docker-owncloud-client .
 ```
 ## Run it:
 ```
-$ $ docker run -d \
+$ docker run -d \
              --name occlient \
              -v /your/ocdata/path/:/ocdata \
              -e OC_USER=owncloud_username \
