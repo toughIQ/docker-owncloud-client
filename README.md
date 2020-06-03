@@ -1,14 +1,8 @@
 # docker-owncloud-client
 Dockerized OwnCloud CLI Client
 
-## Raspberry Pi Image
-There is also an RPI image availabe. Config stays the same, just use __:rpi__ with all images below. eg. `toughiq/owncloud-client:rpi`
-
 ## Build
-`docker build -t toughiq/owncloud-client .`
-
-### RPI
-`docker build -f Dockerfile.rpi -t toughiq/owncloud-client:rpi .`
+`docker build -t dyonr/docker-owncloud-client .`
 
 ## Run
 ```
@@ -23,9 +17,6 @@ docker run -d \
 ```
 
 I also added a `docker-compose.yml` file with all available parameters, so its easier to setup your proper environment. Change values to match your environment and run with `docker-compose up -d`
-
-### RPI
-Run with `docker-compose -f docker-compose.rpi.yml up -d`
 
 ## Debugging
 Run a `docker logs -f <YourContainerID>` to see what is happening.
