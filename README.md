@@ -14,7 +14,7 @@ To run the container use this command:
 
 ```
 $ docker run -d \
-             --name='occlient' \
+             --name='owncloud-client' \
              -v /your/ocdata/path/:/ocdata \
              -e OC_USER=owncloud_username \
              -e OC_PASS=owncloud_password \
@@ -67,7 +67,7 @@ $ docker build -t docker-owncloud-client .
 ## Run it:
 ```
 $ docker run -d \
-             --name='occlient' \
+             --name='owncloud-client' \
              -v /your/ocdata/path/:/ocdata \
              -e OC_USER=owncloud_username \
              -e OC_PASS=owncloud_password \
