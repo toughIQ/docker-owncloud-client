@@ -1,5 +1,5 @@
 # docker-owncloud-client
-Dockerized ownCloud CLI Client to sync from any supported OwnCloud enviroments.  
+Dockerized ownCloud CLI Client to sync from any supported ownCloud enviroments.  
 I forked the original project to be able to run TransIP's STACK in a docker.
 
 ## Docker Features
