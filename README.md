@@ -5,7 +5,7 @@ I forked the original project to be able to run TransIP's STACK in a docker.
 ## Docker Features
 * Base: Debian 10
 * Latest ownCloud Client from the OpenSUSE repositories
-* Size: < 250MB
+* Size: <100MB
 * Ability to only sync only one folder
 
 # Run container from Docker registry
@@ -63,6 +63,7 @@ To build this container, clone the repository and cd into it.
 $ cd /repo/location/docker-owncloud-client
 $ docker build -t docker-owncloud-client .
 ```
+
 ## Run it:
 ```
 $ docker run -d \
@@ -72,5 +73,5 @@ $ docker run -d \
              -e OC_PASS=owncloud_password \
              -e OC_SERVER=myowncloud.com \
              --restart unless-stopped \
-             'dyonr/owncloud-client'
+             'docker-owncloud-client'
 ```
