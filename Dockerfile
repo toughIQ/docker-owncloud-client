@@ -1,5 +1,5 @@
 FROM debian:10
-MAINTAINER toughIQ <toughiq@gmail.com>
+MAINTAINER DyonR
 
 # Create the directory in which the scripts will be stored
 RUN mkdir -p /opt/Scripts
