@@ -40,7 +40,7 @@ I also added a `docker-compose.yml` file with all available parameters, so its e
 |`TRUST_SELFSIGN`| No | Ignore self-signed certificate errors. Set to `1` to ignore errors)|`TRUST_SELFSIGN=002`|`0`|
 |`SYNC_HIDDEN`| No | Set to `1` to sync all hidden files within the specified ownCloud directory (equivalent to owncloudcmd -h) |`SYNC_HIDDEN=0`|`0`|
 |`SILENCE_OUTPUT`| No | Set to `0` to get more verbose output |`SILENCE_OUTPUT=1`|`1`|
-|`RUN_INTERVAL`| No | Interval in seconds at which the client will run and check for changes |`RUN_INTERVAL=60` |???|
+|`RUN_INTERVAL`| No | Interval in seconds at which the client will run and check for changes |`RUN_INTERVAL=60`|30|
 |`RUN_UID`| No | Only sync one specific folder |`RUN_UID=1000`|`1000`|
 
 ## Volumes
