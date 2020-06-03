@@ -1,5 +1,12 @@
 # docker-owncloud-client
-Dockerized OwnCloud CLI Client
+Dockerized ownCloud CLI Client to sync from any supported OwnCloud enviroments.
+I forked the original project to be able to run TransIP's STACK in a docker.
+
+## Docker Features
+* Base: Debian 10
+* Latest ownCloud Client from the OpenSUSE repositories
+* Size: < 250MB
+* Ability to only sync only one folder
 
 ## Build
 `docker build -t dyonr/docker-owncloud-client .`
@@ -18,41 +25,31 @@ docker run -d \
 
 I also added a `docker-compose.yml` file with all available parameters, so its easier to setup your proper environment. Change values to match your environment and run with `docker-compose up -d`
 
+
+# Environment Variables & Volumes
+## Environment Variables
+| Variable | Required | Function | Example | Default |
+|----------|----------|----------|----------|----------|
+|`OC_USER`| Yes | Username to connect to ownCloud |`OC_USER=dyonr`||
+|`OC_PASS`| Yes | Password or App-Token for the ownCloud user |`OC_PASS=ac98df79ed7fb`||
+|`OC_SERVER`| Yes | ownCloud Server URL, with, if necessary, with port |`OC_SERVER=example.com:8443`||
+|`OC_PROTO`| No | Connect via http or https. |`OC_PROTO=https`|`https`|
+|`OC_URLPATH`| No | Server path to the ownCloud instance (like https://example.com:8443**/owncloud/** |`OC_URLPATH=/owncloud/`| `/owncloud/`|
+|`OC_WEBDAV`| No | In case the webdav path is not `remote.php/webdav`, you can change it here |`OC_WEBDAV=remote.php/webdav`| `remote.php/webdav` |
+|`OC_FILEPATH`| No | Only sync one specific folder |`OC_FILEPATH=/Pictures/Holiday-2020` ||
+|`TRUST_SELFSIGN`| No | Ignore self-signed certificate errors. Set to `1` to ignore errors)|`TRUST_SELFSIGN=002`|`0`|
+|`SYNC_HIDDEN`| No | Set to `1` to sync all hidden files within the specified ownCloud directory (equivalent to owncloudcmd -h) |`SYNC_HIDDEN=0`|`0`|
+|`SILENCE_OUTPUT`| No | Set to `0` to get more verbose output |`SILENCE_OUTPUT=1`|`1`|
+|`RUN_INTERVAL`| No | Interval in seconds at which the client will run and check for changes |`RUN_INTERVAL=60` |???|
+|`RUN_UID`| No | Only sync one specific folder |`RUN_UID=1000`|`1000`|
+
+## Volumes
+| Volume | Required | Function | Example |
+|----------|----------|----------|----------|
+| `ocdata` | Yes | ownCloud sync location | `/your/ocdata/path/:/ocdata`|
+
 ## Debugging
 Run a `docker logs -f <YourContainerID>` to see what is happening.
-
-## Environment Variables
-### OC_USER
-Username to connect to OwnCloud
-### OC_PASS
-Password or App-Token for Owncloud User. I recommend using an App-Token. This can be created in your Personal settings in OwnCloud Webinterface. Its called __App passwords__.
-### OC_PROTO
-Defaults to `https`. If you know what you are doing, you could change it to `http`. __Not recommended!__
-### OC_SERVER
-OwnCloud Server URL. eg. `myowncloud.com`
-Since this is used for `.netrc` creation and CLI URL, just give the servername here. The protocol and path information is added by other variables.
-If you need to specify a different port, eg. 8443 instead of default 443, please specify like `myowncloud.com:8443`
-### OC_URLPATH
-Use this parameter to add a path to your OwnCloud instance. Like https://myserver.com__/owncloud__. In this case the value would be `/owncloud/`.
-### OC_WEBDAV
-This variable is fixed with most OwnCloud installations, so it might not be changed in normal usecases. It defaults to `remote.php/webdav`
-### OC_FILEPATH
-You can append a filepath, so the client will only sync from this path and below. eg. `/Photos` will only sync everything in the __Photos__ directory of your OwnCloud.
-### TRUST_SELFSIGN
-To ignore errors from selfsigned certificates, set value to `1`. 
-`Default: 0`
-### SYNC_HIDDEN
-If this parameter is set to `1`, it will also sync all hidden files within the specified ownCloud directory (equivalent to `owncloudcmd -h`) 
-`Default: 0`
-### SILENCE_OUTPUT
-If this parameter is set to `0`, output will be more verbose and might create huge log files, if it is set to `1` output will be silenced. 
-`Default: 1`
-### RUN_INTERVAL
-This specifies the interval in seconds at which the client will run and check for changes.
-### RUN_UID
-This is needed to ensure, that the data written to the mounted directory, is written as your user and not as root. There will be a user with this exact UID created within the container and `owncloudcmd` is executed as that user.
-Defaults to `UID 1000` which is the common UID for desktop linux users. You can find your current UID by `id -u` on the commandline.
-Currently the usage of `UID 0` for __root__ is not supported, since it would collide with the usercreation within the container. Will be changed later on.
 
 ## Loadtesting OwnCloud instances
 __Do this at your own risk, only when know what you are doing and if the OwnCloud you test against belongs to you!__
