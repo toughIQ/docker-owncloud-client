@@ -13,11 +13,7 @@ RUN apt update \
     dialog \
     apt-utils \
     htop \
-    gnupg2 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && rm -rf /usr/share/doc /usr/share/man /usr/share/locale /usr/share/info /usr/share/lintian
-
+    gnupg2
 
 RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_10/ /' > /etc/apt/sources.list.d/owncloud-client.list \
     && wget -nv https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_10/Release.key -O Release.key \
