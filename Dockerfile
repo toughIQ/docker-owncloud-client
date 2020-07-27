@@ -2,13 +2,14 @@ FROM debian:10
 MAINTAINER DyonR
 
 # Create the directory in which the scripts will be stored
-RUN mkdir -p /opt/Scripts
+RUN mkdir -p /opt/ownCloud
 
 # Update, upgrade and install some packages
 RUN apt update \
     && apt -y upgrade \
     && apt -y install \
     apt-transport-https \
+	moreutils \
     wget \
     dialog \
     apt-utils \
@@ -33,16 +34,16 @@ RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/
     /usr/share/lintian \
     /Release.key
 
-COPY *.sh /opt/Scripts/
+COPY *.sh /opt/ownCloud/
 WORKDIR /ocdata
 
-ENTRYPOINT ["/opt/Scripts/docker-entrypoint.sh"]
-CMD ["/opt/Scripts/run.sh"]
+ENTRYPOINT ["/opt/ownCloud/docker-entrypoint.sh"]
+CMD ["/opt/ownCloud/run.sh"]
 
 ENV OC_USER=oc_username \
     OC_PASS=oc_passwordORtoken \
+	OC_SERVER=yourserver.com \
     OC_PROTO=https \
-    OC_SERVER=yourserver.com \
     OC_URLPATH=/ \
     OC_WEBDAV=remote.php/webdav \
     OC_FILEPATH=/ \
