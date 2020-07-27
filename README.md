@@ -1,5 +1,5 @@
 # docker-owncloud-client
-Dockerized ownCloud CLI Client (owncloudcmd) to sync from any supported ownCloud enviroment.  
+Dockerized ownCloud CLI Client (owncloudcmd) to sync from any supported ownCloud-like enviroment.  
 This container should work with ownCloud, NextCloud, TransIP STACK and any other ownCloud/NextCloud based storage endpoints.
 
 I forked the original project to be able to run TransIP's STACK in a docker.
