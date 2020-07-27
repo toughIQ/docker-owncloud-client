@@ -1,8 +1,11 @@
 # docker-owncloud-client
-Dockerized ownCloud CLI Client (owncloudcmd) to sync from any supported ownCloud-like enviroment.  
+Dockerized ownCloud CLI Client (owncloudcmd) to sync from any supported ownCloud-like environment.  
 This container should work with ownCloud, NextCloud, TransIP STACK and any other ownCloud/NextCloud based storage endpoints.
 
-I forked the original project to be able to run TransIP's STACK in a docker.
+I forked the original project to be able to run TransIP's STACK in a Docker.
+
+The main use of this Docker is to be able to syncronise with another ownCloud-like environment that is not part of the server that you run this Docker on.
+Examples of this may be the ownCloud or Nextcloud environment of a friend, a paid ownCloud-like environment like TransIP STACK.
 
 ## Docker Features
 * Base: Debian 10
@@ -42,8 +45,8 @@ $ docker run -d \
 |`SYNC_HIDDEN`| No | Set to `1` to sync all hidden files within the specified ownCloud directory|`SYNC_HIDDEN=0`|`0`|
 |`SILENCE_OUTPUT`| No | Set to `0` to get more verbose output |`SILENCE_OUTPUT=1`|`1`|
 |`RUN_INTERVAL`| No | Interval in seconds at which the client will run and check for changes |`RUN_INTERVAL=60`|`30`|
-|`RUN_UID`| No |  |`RUN_UID=99`|`99`|
-|`RUN_GID`| No |  |`RUN_UID=100`|`100`|
+|`RUN_UID`| No | UID of the occlient user and the /ocdata folder/files |`RUN_UID=99`|`99`|
+|`RUN_GID`| No | GID of the occlient user and the /ocdata folder/files |`RUN_UID=100`|`100`|
 
 ## Volumes
 | Volume | Required | Function | Example |
