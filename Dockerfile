@@ -9,7 +9,7 @@ RUN apt update \
     && apt -y upgrade \
     && apt -y install \
     apt-transport-https \
-	moreutils \
+    moreutils \
     wget \
     dialog \
     apt-utils \
@@ -42,7 +42,7 @@ CMD ["/opt/ownCloud/run.sh"]
 
 ENV OC_USER=oc_username \
     OC_PASS=oc_passwordORtoken \
-	OC_SERVER=yourserver.com \
+    OC_SERVER=yourserver.com \
     OC_PROTO=https \
     OC_URLPATH=/ \
     OC_WEBDAV=remote.php/webdav \
