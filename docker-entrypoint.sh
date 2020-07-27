@@ -14,7 +14,7 @@ machine $oc_server_without_port
 	password $OC_PASS
 EOF
 chown $RUN_UID:$RUN_GID $netrc_file
-chmod $RUN_UID:$RUN_GID $netrc_file
+chmod 600 $netrc_file
 
 chown -R $RUN_UID:$RUN_GID /ocdata
 
