@@ -9,7 +9,7 @@ RUN apt update \
     && apt -y upgrade \
     && apt -y install \
     apt-transport-https \
-	moreutils \
+    moreutils \
     wget \
     dialog \
     apt-utils \
