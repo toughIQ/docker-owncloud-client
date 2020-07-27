@@ -34,11 +34,11 @@ $ docker run -d \
 |`OC_USER`| Yes | Username to connect to ownCloud |`OC_USER=dyonr`||
 |`OC_PASS`| Yes | Password or App-Token for the ownCloud user |`OC_PASS=ac98df79ed7fb`||
 |`OC_SERVER`| Yes | ownCloud Server URL, with, if necessary, with port |`OC_SERVER=example.com:8443`||
-|`OC_PROTO`| No | Connect via http or https. |`OC_PROTO=https`|`https`|
-|`OC_URLPATH`| No | Server path to the ownCloud instance (example: https://example.com:8443/owncloud/ becomes `/owncloud/` |`OC_URLPATH=/owncloud/`| `/owncloud/`|
+|`OC_PROTO`| No | Connect via http or https |`OC_PROTO=https`|`https`|
+|`OC_URLPATH`| No | Server path to the ownCloud instance (example: https://example.com:8443/owncloud/ becomes `/owncloud/`) |`OC_URLPATH=/owncloud/`| `/owncloud/`|
 |`OC_WEBDAV`| No | In case the webdav path is not `remote.php/webdav`, you can change it here |`OC_WEBDAV=remote.php/webdav`| `remote.php/webdav` |
 |`OC_FILEPATH`| No | Only sync one specific folder |`OC_FILEPATH=/Pictures/Holiday-2020`|`/`|
-|`TRUST_SELFSIGN`| No | Ignore self-signed certificate errors. Set to `1` to ignore SSL errors)|`TRUST_SELFSIGN=0`|`0`|
+|`TRUST_SELFSIGN`| No | Ignore self-signed certificate errors (Set to `1` to ignore SSL errors)|`TRUST_SELFSIGN=0`|`0`|
 |`SYNC_HIDDEN`| No | Set to `1` to sync all hidden files within the specified ownCloud directory|`SYNC_HIDDEN=0`|`0`|
 |`SILENCE_OUTPUT`| No | Set to `0` to get more verbose output |`SILENCE_OUTPUT=1`|`1`|
 |`RUN_INTERVAL`| No | Interval in seconds at which the client will run and check for changes |`RUN_INTERVAL=60`|`30`|
