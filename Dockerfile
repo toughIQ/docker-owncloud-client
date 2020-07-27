@@ -50,4 +50,5 @@ ENV OC_USER=oc_username \
     SYNC_HIDDEN=0 \
     SILENCE_OUTPUT=1 \
     RUN_INTERVAL=30 \
-    RUN_UID=1000
+    RUN_UID=99 \
+    RUN_GID=100
