@@ -60,3 +60,6 @@ This Docker container exposes no ports, has no UI and therfore does not need to 
 If you are having issues with this container please submit an issue on GitHub.
 Please provide logs, Docker version and other information that can simplify reproducing the issue.
 Using the latest stable verison of Docker is always recommended. Any support is on a best-effort basis.
+
+## Disclaimer
+I am not responsible for any data loss due wrong configurations
