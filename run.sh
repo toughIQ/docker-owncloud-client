@@ -13,7 +13,7 @@ fi
 
 # check if we should silence output
 if [ "$SILENCE_OUTPUT" -eq 1 ]; then
-	SILENCEOUTPUT='-s'
+	SILENCEOUTPUT='--silent'
 fi
 
 while true
