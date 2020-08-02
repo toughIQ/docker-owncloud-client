@@ -15,7 +15,7 @@ if [ $? -eq 0 ]; then
 	echo "[INFO] An user with PUID $RUN_UID already exists in /etc/passwd, nothing to do." | ts '%Y-%m-%d %H:%M:%.S'
 else
 	echo "[INFO] An user with PUID $RUN_UID does not exist, adding an user called 'occlient user' with PUID $RUN_UID" | ts '%Y-%m-%d %H:%M:%.S'
-	useradd -c "occlient user" -g $RUN_GID -u $RUN_UID occlient
+	useradd --comment "occlient user" --gid $RUN_GID --uid $RUN_UID --create-home occlient
 fi
 
 netrc_file="/home/occlient/.netrc"
