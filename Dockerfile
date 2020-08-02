@@ -1,5 +1,4 @@
 FROM debian:10
-MAINTAINER DyonR
 
 # Create the directory in which the scripts will be stored
 RUN mkdir -p /opt/ownCloud
@@ -13,7 +12,6 @@ RUN apt update \
     wget \
     dialog \
     apt-utils \
-    htop \
     gnupg2
 
 RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_10/ /' > /etc/apt/sources.list.d/owncloud-client.list \
