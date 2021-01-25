@@ -1,4 +1,4 @@
-FROM debian:10
+FROM debian:10-slim
 
 # Create the directory in which the scripts will be stored
 RUN mkdir -p /opt/ownCloud
@@ -12,15 +12,28 @@ RUN apt update \
     wget \
     dialog \
     apt-utils \
-    gnupg2
+    gnupg2 \
+    && apt-get clean \
+    && apt -y autoremove \
+    && rm -rf \
+    /var/lib/apt/lists/* \
+    /tmp/* \
+    /var/tmp/* \
+    /usr/share/doc \
+    /usr/share/man \
+    /usr/share/locale \
+    /usr/share/info \
+    /usr/share/lintian
 
+# Add the ownCloud repository and install it
 RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_10/ /' > /etc/apt/sources.list.d/owncloud-client.list \
-    && wget -nv https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_10/Release.key -O Release.key \
+    && wget -nv 'https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_10/Release.key' -O Release.key \
     && apt-key add - < Release.key \
     && apt update \
     && apt install -yq --no-install-recommends owncloud-client \
     && apt upgrade -y \
     && apt-get clean \
+    && apt -y autoremove \
     && rm -rf \
     /var/lib/apt/lists/* \
     /tmp/* \
@@ -35,8 +48,8 @@ RUN echo 'deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/
 COPY *.sh /opt/ownCloud/
 WORKDIR /ocdata
 
-ENTRYPOINT ["/opt/ownCloud/docker-entrypoint.sh"]
-CMD ["/opt/ownCloud/run.sh"]
+ENTRYPOINT ["/bin/bash","/opt/ownCloud/docker-entrypoint.sh"]
+CMD ["/bin/bash", "/opt/ownCloud/run.sh"]
 
 ENV OC_USER=oc_username \
     OC_PASS=oc_passwordORtoken \

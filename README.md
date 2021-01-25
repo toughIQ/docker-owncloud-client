@@ -1,4 +1,7 @@
 # docker-owncloud-client
+[![Docker Pulls](https://img.shields.io/docker/pulls/dyonr/owncloud-client)](https://hub.docker.com/r/dyonr/owncloud-client)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dyonr/owncloud-client/latest)](https://hub.docker.com/r/dyonr/owncloud-client)  
+
 Dockerized ownCloud CLI Client (owncloudcmd) to sync from any supported ownCloud-like environment.  
 This container should work with ownCloud, NextCloud, TransIP STACK and any other ownCloud/NextCloud based storage endpoints.
 
